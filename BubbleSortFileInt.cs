@@ -30,7 +30,7 @@ namespace AlgorithmPrograms
                 array[i] = Utility.IsInteger(Console.ReadLine());
             }
 
-            string s = "";
+            string s = string.Empty;
             for (i = 0; i < count; i++)
             {
                 s = s + (array[i].ToString() + " ");

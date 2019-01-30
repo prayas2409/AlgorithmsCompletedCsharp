@@ -32,7 +32,7 @@ namespace AlgorithmPrograms
             }
             else if (type == 2)
             {
-                float f = (float)(((temp) - 32.0) * (5.0 / 9));
+                float f = (float)((temp - 32.0) * (5.0 / 9));
                 Console.WriteLine("The temprature in Farenheit is {0}", f);
             }
             else

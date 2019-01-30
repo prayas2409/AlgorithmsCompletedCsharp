@@ -22,7 +22,7 @@ namespace AlgorithmPrograms
         public void MergeSortAlgoDemo()
         {
             Console.WriteLine("Enter the string whose words are to be sorted");
-            string s, temp = "";
+            string s, temp = string.Empty;
             int count = 0, i = 0;
             s = Console.ReadLine();
             foreach (char c in s)
@@ -40,7 +40,7 @@ namespace AlgorithmPrograms
                 if (c == ' ')
                 {
                     stringarray[i] = temp;
-                    temp = "";
+                    temp = string.Empty;
                     i++;
                 }
                 else

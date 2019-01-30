@@ -66,7 +66,7 @@ namespace AlgorithmPrograms
             }
 
             string[] stringarray = new string[count + 1];
-            string temp = "";
+            string temp = string.Empty;
             i = 0;
             //// separates the complete string into words
             foreach (char c in copy)
@@ -79,7 +79,7 @@ namespace AlgorithmPrograms
                 {
                     stringarray[i] = temp;
                     i++;
-                    temp = "";
+                    temp = string.Empty;
                 }
 
                 stringarray[i] = temp;

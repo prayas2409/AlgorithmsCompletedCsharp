@@ -21,7 +21,7 @@ namespace AlgorithmPrograms
         /// </summary>
         public void InsertionSortLineDemo()
         {
-            string string1, temp = "";
+            string string1, temp = string.Empty;
             int i = 0, count = 0;
             Console.WriteLine("Enter the line for sorting its words");
             string1 = Console.ReadLine();
@@ -41,7 +41,7 @@ namespace AlgorithmPrograms
                 if (c == ' ')
                 {
                     stringArray[i] = temp;
-                    temp = "";
+                    temp = string.Empty;
                     i++;
                     Console.WriteLine();
                 }
