@@ -1,44 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MergeSortAlgo.cs" company="Bridgelabz">
+//   Copyright © 2015 Company
+// </copyright>
+// <creator name="Prayas Pagade"/>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace AlgorithmPrograms
 {
-    class MergeSortAlgo
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The class is to execute the merge sort in strings
+    /// </summary>
+    public class MergeSortAlgo
     {
+        /// <summary>
+        /// TMethod to execute Merge sort
+        /// </summary>
         public void MergeSortAlgoDemo()
         {
             Console.WriteLine("Enter the string whose words are to be sorted");
-            String s,temp="";
-            int count = 0,i=0;
+            string s, temp = "";
+            int count = 0, i = 0;
             s = Console.ReadLine();
-            foreach (char c in s) if(c==' ') count++;
-            Console.WriteLine("count is "+count);
-
-            String[] stringarray = new String[count+1];
             foreach (char c in s)
             {
-                if ((c == ' '))
+                if (c == ' ')
+                {
+                    count++;
+                }
+            }
+
+            Console.WriteLine("count is " + count);
+            string[] stringarray = new string[count + 1];
+            foreach (char c in s)
+            {
+                if (c == ' ')
                 {
                     stringarray[i] = temp;
                     temp = "";
                     i++;
                 }
-                else temp = temp + c;
+                else
+                {
+                    temp = temp + c;
+                }
             }
+
             stringarray[i] = temp;
             Console.WriteLine("Before sorting the srting is");
             for (i = 0; i <= count; i++)
             {
                 Console.WriteLine(stringarray[i]);
             }
-            stringarray = Utility.MergeSortString(stringarray,0,count);
+
+            stringarray = Utility.MergeSortString(stringarray, 0, count);
             Console.WriteLine("After sorting the srting is");
             for (i = 0; i <= count; i++)
             {
                 Console.WriteLine(stringarray[i]);
             }
-
         }
     }
 }

@@ -1,33 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="GuessGame.cs" company="Bridgelabz">
+//   Copyright © 2015 Company
+// </copyright>
+// <creator name="Prayas Pagade"/>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace AlgorithmPrograms
 {
-    class GuessGame
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The class is for executing guess game
+    /// </summary>
+    public class GuessGame
     {
+        /// <summary>
+        /// plays the game demo.
+        /// </summary>
+        /// <param name="num">The number.</param>
         public void GuessGameDemo(int num)
         {
-            int power=Utility.IsPowerOfTwo(num);
-            if (power == 0) Console.WriteLine(" number is not a power of 2");
+            int power = Utility.IsPowerOfTwo(num);
+            if (power == 0)
+            {
+                Console.WriteLine(" number is not a power of 2");
+            }
             else
             {
+                //// 
                 int i, low = 0, high = num, mid;
                 int[] array = new int[num];
-                for (i = 0; i < num; i++) array[i] = i;
+                for (i = 0; i < num; i++)
+                {
+                    array[i] = i;
+                }
+
                 Console.WriteLine("Guess a number in your mind in range 0 to {0} press enter once guessed", num - 1);
-                //taking guess number as input
+                //// taking guess number as input
                 Console.ReadLine();
+                //// while n in 2^n
                 while (power > 0)
                 {
                     mid = (low + high) / 2;
-                    
-                    Console.WriteLine("Is the number {0} true or false",array[mid]);
+                    Console.WriteLine("Is the number {0} true or false", array[mid]);
                     if (Utility.IsBoolean(Console.ReadLine()))
                     {
                         Console.WriteLine("Yeah we won");
                         return;
                     }
+
                     Console.WriteLine("Is the number less than {0} true or false", array[mid]);
                     if (Utility.IsBoolean(Console.ReadLine()))
                     {
@@ -37,6 +60,7 @@ namespace AlgorithmPrograms
                     {
                         low = mid + 1;
                     }
+
                     power--;
                 }
             }        

@@ -7,6 +7,7 @@
 namespace AlgorithmPrograms
 {
     using System;
+
     /// <summary>
     /// This class consist the main method for the project AlgorithmPrograms
     /// </summary>  
@@ -19,10 +20,10 @@ namespace AlgorithmPrograms
         public static void Main(string[] args)
         {
             int flag = 1;
-            string[] array = { "Anagram", "Prime Number", "AnagramPalindrome mix", " Algorithm StopWatch", "Guess game", "BinarySearch in File ", "Insertion Sort Line ", "Bubble Sort File int", "Merge Sort String", "Vending Machine", "Day of Week", "Temprature convert", "Monthly Payment", "Sqrt Newton", "to Binary", "Nibble binary" };
-            for (int i = 0; i < array.Length; i++)
+            string[] programs = { "Anagram", "Prime Number", "AnagramPalindrome mix", " Algorithm StopWatch", "Guess game", "BinarySearch in File ", "Insertion Sort Line ", "Bubble Sort File int", "Merge Sort String", "Vending Machine", "Day of Week", "Temprature convert", "Monthly Payment", "Sqrt Newton", "to Binary", "Nibble binary" };
+            for (int i = 0; i < programs.Length; i++)
             {
-                Console.WriteLine("Enter {0} for {1}", i + 1, array[i]);
+                Console.WriteLine("Enter {0} for {1}", i + 1, programs[i]);
             }
 
             do
@@ -35,7 +36,7 @@ namespace AlgorithmPrograms
                     case 0:
                         return;
                     case 1:
-                        Utility.Anagram("hum","muh");
+                        Utility.Anagram("hum", "muh");
                         break;
                     case 2:
                         PrimeNumbers pn = new PrimeNumbers();

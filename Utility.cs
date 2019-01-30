@@ -9,23 +9,26 @@ namespace AlgorithmPrograms
     using System;
     using System.Collections.Generic;
     using System.Text;
+
     /// <summary>
     /// The class consist of programs that'll be used multiple times
     /// </summary>
     public class Utility
     {
-
         /// <summary>
         /// The method is to validate the input integer
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">its the input string to check its an integer</param>
         /// <returns>an integer number</returns>
         public static int IsInteger(string input)
         {
-            if (Int32.TryParse(input, out int num)) return Convert.ToInt32(input); 
+            if (int.TryParse(input, out int num))
+            {
+                return Convert.ToInt32(input);
+            }
             else
             {
-                while (Int32.TryParse(input, out num) == false)
+                while (int.TryParse(input, out num) == false)
                 {
                     Console.WriteLine("You have not entered an integer number please try again");
                     input = Console.ReadLine();
@@ -38,19 +41,24 @@ namespace AlgorithmPrograms
         /// <summary>
         /// The method is to validate the input double
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">its the input string to check its double</param>
         /// <returns>a double value</returns>
         public static double IsDouble(string input)
         {
             double num;
-            if (Double.TryParse(input, out num)) return num;
+            //// trying to convert the string to double returns true if successful
+            if (double.TryParse(input, out num))
+            {
+                return num;
+            }
             else
             {
-                while (Double.TryParse(input, out num) == false)
+                while (double.TryParse(input, out num) == false)
                 {
                     Console.WriteLine("You have not entered a number please try again");
                     input = Console.ReadLine();
                 }
+
                 return num;
             }
         }
@@ -58,7 +66,7 @@ namespace AlgorithmPrograms
         /// <summary>
         /// Determines whether the specified input is string.
         /// </summary>
-        /// <param name="input">The input.</param>
+        /// <param name="input">The input is to check if string has spaces or digits</param>
         /// <returns>
         /// <c>true</c> if the specified input is not having a number and any spaces; otherwise, <c>false</c>.
         /// </returns>
@@ -74,7 +82,7 @@ namespace AlgorithmPrograms
                     Console.WriteLine("You have entered space it should not be, please try again");
                     input = Console.ReadLine();
                 }
-                // it checks it the string has spaces
+                //// it checks it the string has spaces
                 for (i = 0; i < 10; i++)
                 {
                     if (input.Contains(i.ToString()))
@@ -84,15 +92,20 @@ namespace AlgorithmPrograms
                         input = Console.ReadLine();
                         break;
                     }
-                    else flag = 0;
+                    else
+                    {
+                        flag = 0;
+                    }
                 }
-            } while (flag == 1);
+            }
+            while (flag == 1);
             return input;
         }
+
         /// <summary>Determines whether the specified input is boolean.</summary>
         /// <param name="input">The input.</param>
         /// <returns>
-        ///   <c>true</c> if the specified input is boolean; otherwise, <c>false</c>.</returns>
+        /// <c>true</c> if the specified input is boolean; otherwise, <c>false</c>.</returns>
         public static bool IsBoolean(string input)
         {
             input.ToLower();
@@ -103,14 +116,16 @@ namespace AlgorithmPrograms
                 Console.WriteLine("You have not entered a boolean value please try again");
                 input = Console.ReadLine();
             }
+
             return input.Equals("true") ? true : false;
         }
+
         /// <summary>
         /// It prints 2d arrays
         /// </summary>
-        /// <typeparam name="Template"></typeparam>
-        /// <param name="array"></param>
-        public static void Print2DArray<Template>(Template[,] array)
+        /// <typeparam name="template">generic 2 d array</typeparam>
+        /// <param name="array"> Is the name of 2d array</param>
+        public static void Print2DArray<template>(template[,] array)
         {
             int rows = 0, cols = 0;
             for (rows = 0; rows < array.GetLength(0); rows++)
@@ -118,27 +133,40 @@ namespace AlgorithmPrograms
                 for (cols = 0; cols < array.GetLength(1); cols++)
                 {
                     Console.Write("{0} ", array[rows, cols]);
-
                 }
+
                 Console.WriteLine();
             }
         }
+
         /// <summary>
         /// generates random double element
         /// </summary>
-        /// <returns></returns>
+        /// <returns>it returns random double value</returns>
         public static double RandomDoubleGenerator()
         {
             Random rand = new Random();
             return rand.NextDouble();
         }
+
+        /// <summary>
+        /// It generates random integer.
+        /// </summary>
+        /// <param name="min">The minimum is range from where the random should begin</param>
+        /// <param name="max">The maximum is the max value till where the random should be generated</param>
+        /// <returns>returns the random integer</returns>
         public static int RandomIntGenerator(int min, int max)
         {
             Random rand = new Random();
             return rand.Next(min, max + 1);
         }
 
-        static char[] SortChar(char[] a)
+        /// <summary>
+        /// Sorts the character array.
+        /// </summary>
+        /// <param name="a"> its the character array to be sorted</param>
+        /// <returns> returns sorted character array </returns>
+        public static char[] SortChar(char[] a)
         {
             int i, j;
             char temp;
@@ -154,14 +182,15 @@ namespace AlgorithmPrograms
                     }
                 }
             }
-            return a;
 
+            return a;
         }
+
         /// <summary>
-        /// Checks if both the input strings are anagrams
+        /// Checks if both the input strings are anagrams by sorting and checking the sorted elements 
         /// </summary>
-        /// <param name="string1"></param>
-        /// <param name="string2"></param>
+        /// <param name="string1">it is first string as arg</param>
+        /// <param name="string2">2nd string argument to check if its anagram </param>
         public static void Anagram(string string1, string string2)
         {
             int i, flag = 0;
@@ -194,6 +223,7 @@ namespace AlgorithmPrograms
             }
             if (flag == 0) Console.WriteLine(string1 + " and " + string2 + " are anagrams ");            
         }
+
         /// <summary>
         /// checks is the input number prime and returns bool value for the same
         /// </summary>
@@ -214,6 +244,7 @@ namespace AlgorithmPrograms
 
             return flag;
         }
+
         /// <summary>
         /// Swipes all the element to right from index till the index 'till'
         /// </summary>
@@ -230,8 +261,9 @@ namespace AlgorithmPrograms
             }
             return array;
         }
+
         /// <summary>
-        /// Swipes Srting to right from index till till
+        /// Swipes String to right from index till till
         /// </summary>
         /// <param name="array"></param>
         /// <param name="index"></param>
@@ -246,6 +278,7 @@ namespace AlgorithmPrograms
             }
             return array;
         }
+
         /// <summary>
         /// Sorts integer array using insertion sort
         /// </summary>
@@ -277,6 +310,7 @@ namespace AlgorithmPrograms
             //for(i=0;i<length;i++) System.out.print(" "+array[i]);
             return array;
         }
+
         /// <summary>
         /// Sorts String array using insertion sort
         /// </summary>
@@ -309,6 +343,7 @@ namespace AlgorithmPrograms
             //for(i=0;i<length;i++) System.out.print(" "+array[i]);
             return array;
         }
+
         /// <summary>
         /// Sorts integer array using Bubble sort
         /// </summary>
@@ -333,6 +368,7 @@ namespace AlgorithmPrograms
             }
             return array;
         }
+
         /// <summary>
         /// Sorts String  array using Bubble sort
         /// </summary>
@@ -360,8 +396,9 @@ namespace AlgorithmPrograms
 
             return array;
         }
+
         /// <summary>
-        /// Searchs a number in integer array using Binary search
+        /// Searches a number in integer array using Binary search
         /// </summary>
         /// <param name="array"></param>
         /// <param name="num"></param>
@@ -395,8 +432,9 @@ namespace AlgorithmPrograms
             Console.WriteLine("Number not found");
 
         }
+
         /// <summary>
-        /// Searchs a String in string array using Binary search
+        /// Searches a String in string array using Binary search
         /// </summary>
         /// <param name="array"></param>
         /// <param name="num"></param>
@@ -428,6 +466,7 @@ namespace AlgorithmPrograms
             }
             Console.WriteLine("String not found");
         }
+
         /// <summary>
         /// checks is the number power of 2 if yes returns power else 0
         /// </summary>
@@ -471,20 +510,21 @@ namespace AlgorithmPrograms
         public static string[] Combine(string[] a, int la, string[] b, int lb)
         {
             //// i counts the lenth of a
-            /// k counts the length of b
-            /// j counts the length of c that is destination
+            //// k counts the length of b
+            //// j counts the length of c that is destination
             int j, i = 0, k = 0;
             //c is the destination array where both string a and b will be stored
-            String[] c = new String[la + lb];
+            string[] c = new string[la + lb];
             i = 0;
             for (j = 0; j < c.Length; j++)
             {
-                //if b is completely added to array then add all the elements of a
+                //// if b is completely added to array then add all the elements of a
                 if (k >= lb && i < la)
                 {
                     c[j] = "" + a[i];
                     i++;
-                }//if A is completely added to array then add b 
+                }
+                //// if A is completely added to array then add b 
                 else if (i >= la && k < lb)
                 {
                     c[j] = "" + b[k];
@@ -492,12 +532,13 @@ namespace AlgorithmPrograms
                 }
                 else
                 {                   
-                    //if element of b is smaller than or equal to a's element
+                    //// if element of b is smaller than or equal to a's element
                     if (b[k].CompareTo(a[i]) <= 0 && k < lb)
                     {
                         c[j] = "" + b[k];
                         k++;
-                    }//if element of b is greater than a's element then add b's element
+                    }
+                    //// if element of b is greater than a's element then add b's element
                     else if (b[k].CompareTo(a[i]) >= 1 && i < la)
                     {
                         c[j] = "" + a[i];
@@ -510,7 +551,7 @@ namespace AlgorithmPrograms
             return c;
         }
         /// <summary>
-        /// Sorts Srtings using merge sort
+        /// Sorts Strings using merge sort
         /// </summary>
         /// <param name="a"></param>
         /// <param name="low"></param>
@@ -519,8 +560,8 @@ namespace AlgorithmPrograms
         public static string[] MergeSortString(string[] a, int low, int high)
         {
             int mid = low + (high - low) / 2;
-            //r1 stores first half merge, r2 stores next half and c stores the combined one of both the halves
-            String[] r1 = new String[mid - low + 1], r2 = new String[high - mid], c = new String[high - low + 1];
+            //// r1 stores first half merge, r2 stores next half and c stores the combined one of both the halves
+            string[] r1 = new string[mid - low + 1], r2 = new string[high - mid], c = new string[high - low + 1];
             if (low < high)
             {
                 r1 = MergeSortString(a, low, mid);
@@ -530,7 +571,7 @@ namespace AlgorithmPrograms
             }
             else
             {
-                //returning the only element in the array
+                //// returning the only element in the array
                 c[0] = "" + a[low];
                 return c;
             }
@@ -549,15 +590,16 @@ namespace AlgorithmPrograms
             m0 = month + 12 * ((14 - month) / 12) - 2;
             d0 = (day + x + (31 * month) / 12) % 7;
 
-            String[] months = new String[] {
-                "January","Feb","March","April","May","June","July","August","September","October","November",
+            string[] months = new string[] {
+                "January", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November",
                         "December"
             };
-            String[] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            string[] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 
             Console.WriteLine("The day on this date is " + days[d0 - 1]);
 
         }
+
         /// <summary>
         /// Finds out monthly payment to be made
         /// </summary>
@@ -572,20 +614,21 @@ namespace AlgorithmPrograms
             r = R / 1200.0;
 
              
-            // below functionality can be done by denominator=Math.Pow(denominator, -n);
+            //// below functionality can be done by denominator=Math.Pow(denominator, -n);
             denominator = 1;
-            //calculating (1+r)^-n
+            //// calculating (1+r)^-n
             for (int i = 1; i < n; i++)
             {
                 denominator = denominator * (1 + r);
             }
-            //calculating 1+ (1+r)^-n
+            //// calculating 1+ (1+r)^-n
             denominator = (float)(1.0 / denominator);
             Console.WriteLine("denominator: " + denominator);
             denominator = 1 + denominator;
             payment = (P * r) / (denominator);
             Console.WriteLine("Payment to be made monthly: "+payment);
         }
+
         /// <summary>
         /// converts the number to binary printing 0 and 1
         /// </summary>
@@ -595,25 +638,25 @@ namespace AlgorithmPrograms
         {
             int count, i = 0, power = 1;
 
-            //calculating the power of 2 just greater than number
+            //// calculating the power of 2 just greater than number
             for (; num >= power; i++)
             {
                 power *= 2;
             }
             /*
-		 * count will keep track of n in 2^n
-		 * values store 1,2,4,8
-		 * nums store which number will be used to calculate the number
-		 */
+		     count will keep track of n in 2^n
+		     values store 1,2,4,8
+		     nums store which number will be used to calculate the number
+		    */
             count = i;
             int[] values = new int[i], nums = new int[i];
-            //storing values 16 8 4 2 in values
+            //// storing values 16 8 4 2 in values
             for (i = 0; power > 1; i++)
             {
                 power = power / 2;
                 values[i] = power;
             }
-            //storing power into count
+            //// storing power into count
             count = i;
          //   for (i = 0; i < count; i++) Console.Write(" " + values[i]);
          //   Console.WriteLine();

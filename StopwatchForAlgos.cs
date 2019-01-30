@@ -1,11 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StopwatchForAlgos.cs" company="Bridgelabz">
+//   Copyright © 2015 Company
+// </copyright>
+// <creator name="Prayas Pagade"/>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace AlgorithmPrograms
 {
-    class StopwatchForAlgos
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// This class is to call various methods and print the time elapsed between them
+    /// </summary>
+    public class StopwatchForAlgos
     {
+        /// <summary>
+        /// this method executes the stop watch in algorithms program
+        /// </summary>
         public void ElapsedTimeForAlgos()
         {
             double start = 0, stop = 0;
@@ -14,49 +27,54 @@ namespace AlgorithmPrograms
             
             Console.WriteLine("Enter the length of integer array");
             intlength = Utility.IsInteger(Console.ReadLine());
-            int[] array = new int[intlength]; //integer array
-            int[] tempintar = new int[intlength];
+            int[] array = new int[intlength]; ////integer array
+            int[] tempintar = new int[intlength]; 
             Console.WriteLine("Enter the array");
-            for (i = 0; i < intlength; i++) array[i] = Utility.IsInteger(Console.ReadLine()); ;
-             
+            for (i = 0; i < intlength; i++)
+            {
+                array[i] = Utility.IsInteger(Console.ReadLine());
+            }          
 
             Console.WriteLine("Enter the length of string array");
             stringlength = Utility.IsInteger(Console.ReadLine());
-            String[] stringarray = new String[stringlength];
-            String[] tempstringar = new String[stringlength];
+            string[] stringarray = new string[stringlength];
+            string[] tempstringar = new string[stringlength];
             Console.WriteLine("Enter the array");
-           
-            for (i = 0; i < stringlength; i++) stringarray[i] = Utility.IsString(Console.ReadLine());
-            //stopwatch
+
+            for (i = 0; i < stringlength; i++)
+            {
+                stringarray[i] = Utility.IsString(Console.ReadLine());
+            }
+            //// stopwatch
             double[] times = new double[6];
-            String[] S = new String[6];
+            string[] s = new string[6];
 
             start = Convert.ToDouble(DateTime.Now.Millisecond);
             tempintar = Utility.InsertionSortInt(array, intlength);
             stop = Convert.ToDouble(DateTime.Now.Millisecond);
             times[0] = stop - start;
-            S[0] = "InsertionsortInt";
+            s[0] = "InsertionsortInt";
             Console.WriteLine("After insertion sort int");
             
            start = Convert.ToDouble(DateTime.Now.Millisecond);
             tempstringar = Utility.InsertionSortString(stringarray, stringlength);
             stop = Convert.ToDouble(DateTime.Now.Millisecond);
             times[1] = stop - start;
-            S[1] = "InsertionsortString";
+            s[1] = "InsertionsortString";
             Console.WriteLine("After insertion sort String");
            
             start = Convert.ToDouble(DateTime.Now.Millisecond);
             stringarray = Utility.BubbleSortString(stringarray, stringlength);
             stop = Convert.ToDouble(DateTime.Now.Millisecond);
             times[2] = stop - start;
-            S[2] = "BubblesortString";
+            s[2] = "BubblesortString";
             Console.WriteLine("After Bubble sort String");
 
             start = Convert.ToDouble(DateTime.Now.Millisecond);
             array = Utility.BubbleSortInt(array, intlength);
             stop = Convert.ToDouble(DateTime.Now.Millisecond);
             times[3] = stop - start;
-            S[3] = "BubblesortInt";
+            s[3] = "BubblesortInt";
             Console.WriteLine("After Bubble sort Int");
 
             Console.WriteLine("Enter the number to be searched");
@@ -66,22 +84,22 @@ namespace AlgorithmPrograms
             Utility.BinarySearchInt(array, num);
             stop = Convert.ToDouble(DateTime.Now.Millisecond);
             times[4] = stop - start;
-            S[4] = "BinarraySearchInt";
+            s[4] = "BinarraySearchInt";
             Console.WriteLine("After Binary Search Int");
 
             Console.WriteLine("Enter the String to be searched");
-            String search = Utility.IsString(Console.ReadLine());
+            string search = Utility.IsString(Console.ReadLine());
 
             start = Convert.ToDouble(DateTime.Now.Millisecond);
             Utility.BinarySearchString(stringarray, search);
             stop = Convert.ToDouble(DateTime.Now.Millisecond);
             times[5] = stop - start;
-            S[5] = "BinarraySearchString";
+            s[5] = "BinarraySearchString";
             Console.WriteLine("After Binary Search String");
 
-            //Temporary variables to sort the time and names of Processes to swap
+            //// Temporary variables to sort the time and names of Processes to swap
             double temp;
-            String change;
+            string change;
 
             for (i = 0; i < times.Length; i++)
             {
@@ -90,19 +108,21 @@ namespace AlgorithmPrograms
                     if (times[j] < times[j + 1])
                     {
                         temp = times[i];
-                        change = S[i];
+                        change = s[i];
                         times[i] = times[j];
-                        S[i] = S[j];
+                        s[i] = s[j];
                         times[j] = temp;
-                        S[j] = change;
+                        s[j] = change;
                     }
                 }
             }
-            //printing the time taken by algos in decending order
+            //// printing the time taken by algos in decending order
             Console.WriteLine("Times in descending order are");
 
-            for (i = 0; i < times.Length; i++) Console.WriteLine("Time for :" + S[i] + " is " + times[i] + " milliseconds");
-
+            for (i = 0; i < times.Length; i++)
+            {
+                Console.WriteLine("Time for :" + s[i] + " is " + times[i] + " milliseconds");
+            }
         }
     }
 }
