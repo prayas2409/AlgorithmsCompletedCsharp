@@ -39,7 +39,7 @@ namespace DataStructures
                         break;
                     case 2:
                         OrderedList ol = new OrderedList();
-                        ol.OrderedListDemo();
+                        ol.OrderedLinkedListDemo();
                         break;
                     default:
                         Console.WriteLine("Not yet created");
