@@ -25,6 +25,7 @@ namespace AlgorithmPrograms
             string s, temp = string.Empty;
             int count = 0, i = 0;
             s = Console.ReadLine();
+            //// counting number of words by counting spaces
             foreach (char c in s)
             {
                 if (c == ' ')
@@ -33,10 +34,12 @@ namespace AlgorithmPrograms
                 }
             }
 
-            Console.WriteLine("count is " + count);
+            Console.WriteLine("number of spaces " + count);
             string[] stringarray = new string[count + 1];
+            //// converting the line to array of strings to sort them
             foreach (char c in s)
             {
+                //// if space is encountered we store it to next element
                 if (c == ' ')
                 {
                     stringarray[i] = temp;

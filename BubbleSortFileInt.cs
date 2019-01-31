@@ -21,59 +21,70 @@ namespace AlgorithmPrograms
         /// </summary>
         public void BubbleSortFileIntDemo()
         {
-            Console.WriteLine("Enter the numbers of elements for int array");
-            int i, count = Utility.IsInteger(Console.ReadLine());
-            int[] array = new int[count];
-            Console.WriteLine("Enter the integer elements for int array");
-            for (i = 0; i < count; i++)
+            try
             {
-                array[i] = Utility.IsInteger(Console.ReadLine());
-            }
-
-            string s = string.Empty;
-            for (i = 0; i < count; i++)
-            {
-                s = s + (array[i].ToString() + " ");
-            }
-
-            StreamWriter sw = new StreamWriter("integers.txt");
-            sw.WriteLine(s);
-            sw.Close();
-            StreamReader sr = new StreamReader("integers.txt");
-            count = 0;
-            s = sr.ReadLine();
-            sr.Close();
-            foreach (char c in s)
-            {
-                if (c == ' ')
+                Console.WriteLine("Enter the numbers of elements for int array");
+                int i, count = Utility.IsInteger(Console.ReadLine());
+                int[] array = new int[count];
+                Console.WriteLine("Enter the integer elements for int array");
+                //// taking input for integer array
+                for (i = 0; i < count; i++)
                 {
-                    count++;
+                    array[i] = Utility.IsInteger(Console.ReadLine());
+                }
+
+                string s = string.Empty;
+                //// entering numbers to string and separating them by spaces
+                for (i = 0; i < count; i++)
+                {
+                    s = s + (array[i].ToString() + " ");
+                }
+                //// creating object to write to a file
+                StreamWriter sw = new StreamWriter("integers.txt");
+                sw.WriteLine(s);
+                sw.Close();
+                StreamReader sr = new StreamReader("integers.txt");
+                count = 0;
+                s = sr.ReadLine();
+                sr.Close();
+                foreach (char c in s)
+                {
+                    if (c == ' ')
+                    {
+                        count++;
+                    }
+                }
+
+                Console.WriteLine("number of elements in array is " + count);
+                int[] newarray = new int[count];
+                i = 0;
+                int temp = 0;
+                foreach (char c in s)
+                {
+                    //// checking is the string has empty space if yes it means a new word starts after it
+                    if (c.ToString().Equals(" "))
+                    {
+                        newarray[i] = temp;
+                        temp = 0;
+                        i++;
+                    }
+                    //// untill space is encountered we store the array
+                    else if (i < count)
+                    {
+                        temp = (temp * 10) + Convert.ToInt32(c.ToString());
+                    }
+                }
+                //// getting the sorted array
+                newarray = Utility.BubbleSortInt(newarray, count);
+                Console.WriteLine("After sort array is");
+                for (i = 0; i < count; i++)
+                {
+                    Console.Write("{0} ", newarray[i]);
                 }
             }
-
-            Console.WriteLine("count is " + count);
-            int[] newarray = new int[count];
-            i = 0;
-            int temp = 0;
-            foreach (char c in s)
+            catch (Exception e)
             {
-                if (c.ToString().Equals(" "))
-                {
-                    newarray[i] = temp;
-                    temp = 0;
-                    i++;
-                }
-                else if (i < count)
-                {
-                    temp = (temp * 10) + Convert.ToInt32(c.ToString());
-                }                 
-            }
-           
-            newarray = Utility.BubbleSortInt(newarray, count);
-            Console.WriteLine("After sort array is");
-            for (i = 0; i < count; i++)
-            {
-                Console.Write("{0} ", newarray[i]);
+                Console.WriteLine(e.Message);
             }
         }
     }

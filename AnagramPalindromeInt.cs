@@ -20,48 +20,57 @@ namespace AlgorithmPrograms
         /// </summary>
         public void AnagramPalindromeIntDemo()
         {
-            int counter, count = 0, i = 0, j, temp1, temp2 = 0;
-            int[] primearray = new int[1000];
-            for (counter = 2; counter < 1000; counter++)
+            try
             {
-                if (Utility.CheckPrime(counter))
+                int counter, count = 0, i = 0, j, temp1, temp2 = 0;
+                int[] primearray = new int[1000];
+                //// counting the prime numbers in array
+                for (counter = 2; counter < 1000; counter++)
                 {
-                    count++;
+                    if (Utility.CheckPrime(counter))
+                    {
+                        count++;
+                    }
                 }
-            }           
-
-            for (counter = 2; i < count;  counter++)
-            {
-                if (Utility.CheckPrime(counter))
+                //// checking numbers if they're prime and storing them
+                for (counter = 2; i < count; counter++)
                 {
-                    primearray[i] = counter;
-                    i++;
+                    if (Utility.CheckPrime(counter))
+                    {
+                        primearray[i] = counter;
+                        i++;
+                    }
+                }
+
+                string string1;
+                for (i = 0; i < count; i++)
+                {
+                    //// converting the numbers to string
+                    string1 = Convert.ToString(primearray[i]);
+                    for (j = i + 1; j < count; j++)
+                    {
+                        Utility.Anagram(string1, Convert.ToString(primearray[j]));
+                    }
+
+                    temp1 = primearray[i];
+                    ////reversing the digits of the number  
+                    while (temp1 > 0)
+                    {                        
+                        temp2 = (temp2 * 10) + (temp1 % 10);
+                        temp1 = temp1 / 10;
+                    }
+                    //// if both the numbers are same
+                    if ((primearray[i] - temp2 == 0) && primearray[i] > 10)
+                    {
+                        Console.WriteLine("{0} is palindrome", primearray[i]);
+                    }
+
+                    temp2 = 0;
                 }
             }
-
-            string string1;
-            for (i = 0; i < count; i++)
+            catch (Exception e)
             {
-                string1 = Convert.ToString(primearray[i]);
-                for (j = i + 1; j < count; j++)
-                {                    
-                    Utility.Anagram(string1, Convert.ToString(primearray[j]));
-                }
-
-                temp1 = primearray[i];
-                ////reversing the digits of the number  
-                while (temp1 > 0)
-                {
-                    temp2 = (temp2 * 10) + (temp1 % 10);
-                    temp1 = temp1 / 10;
-                }
-
-                if ((primearray[i] - temp2 == 0) && primearray[i] > 10)
-                {
-                    Console.WriteLine("{0} is palindrome", primearray[i]);
-                }
-
-                temp2 = 0; 
+                Console.WriteLine(e.Message);
             }
         }
     }
