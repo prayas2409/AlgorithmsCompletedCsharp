@@ -11,6 +11,7 @@ namespace DataStructures
     using System.IO;
     using System.Collections.Generic;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The class consist of programs that'll be used multiple times
@@ -39,7 +40,41 @@ namespace DataStructures
                 return Convert.ToInt32(input);
             }
         }
+        public static int IsIntegerInRange(string input,int min,int max)
+        {
+            if (int.TryParse(input, out int num) && (num >= min && num<= max))
+            {
+                return Convert.ToInt32(input);
+            }
+            else
+            {
+                bool flag = false;
+                while (flag == false)
+                {
+                    if(int.TryParse(input, out num)== false)
+                    {
+                        Console.WriteLine("You have not entered an integer number please try again");
+                        input = Console.ReadLine();
+                        continue;
+                    }
+                    if((num < min || num > max))
+                    {
+                        Console.WriteLine("Value is not in range");
+                        input = Console.ReadLine();
+                        continue;
+                    }
+                    flag = true;
+                }
 
+                return Convert.ToInt32(input);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether /[is positive integer] [the specified input].
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns></returns>
         public static int IsPositiveInteger(string input)
         {
             if (int.TryParse(input, out int num) && (num > 0 ))
@@ -48,9 +83,9 @@ namespace DataStructures
             }
             else
             {
-                while (int.TryParse(input, out num) == false || num < 0)
+                while (int.TryParse(input, out num) == false || num <= 0)
                 {
-                    Console.WriteLine("You have not entered a positive integer number please try again");
+                    Console.WriteLine("You have not entered a number more than 0 please try again");
                     input = Console.ReadLine();
                 }
 
@@ -781,15 +816,16 @@ namespace DataStructures
                 if (c != ' ')
                 {
                     temp = temp * 10 + Convert.ToInt32(c.ToString());
-                    Console.Write("temp is " + temp);
+                  //  Console.Write("temp is " + temp);
                 }
                 else
                 {
-                    filetointarray[i++] = temp;
+                    filetointarray[i++] = temp;                   
                     temp = 0;
                 }
             }
             filetointarray[i] = temp;
+            Console.WriteLine();
             return filetointarray;
         }
 
@@ -821,6 +857,11 @@ namespace DataStructures
             return store;
         }
 
+        /// <summary>
+        /// Readfroms the file.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns></returns>
         public static string ReadfromFile(string path)
         {
             StreamReader sr = new StreamReader(@path);
@@ -829,11 +870,41 @@ namespace DataStructures
             return read;
         }
 
+        /// <summary>
+        /// Writes to file.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <param name="path">The path.</param>
         public static void WriteToFile(string s, string path)
         {
             StreamWriter sw = new StreamWriter(@path);
             sw.WriteLine(s);
             sw.Close();
+        }
+
+        public static string IsExpression(string expression)
+        {
+            String word = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'$#@!~`:;?";
+            bool flag = false;
+            while(flag == false)
+            {
+                if(expression.Contains(" "))
+                {
+                    Console.WriteLine("Expression should not contain space please try again");
+                    expression=Console.ReadLine();
+                }
+                foreach(char c in word)
+                {
+                    if (expression.Contains(c))
+                    {
+                        Console.WriteLine("Expression should not contain alphabets or special characters please try again");
+                        expression = Console.ReadLine();
+                        break;
+                    }
+                }
+                flag = true;
+            }
+            return expression;
         }
     }
 }

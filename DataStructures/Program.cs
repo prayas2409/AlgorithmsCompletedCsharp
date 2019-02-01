@@ -17,7 +17,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             int i, number;
-            string[] programs = { "Unsorted List First enter data to file", "OrderedList" };
+            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" };
             do
             {
                 //// printing the names of programs
@@ -40,6 +40,22 @@ namespace DataStructures
                     case 2:
                         OrderedList ol = new OrderedList();
                         ol.OrderedLinkedListDemo();
+                        break;
+                    case 3:
+                        BalancedParenthesis bp = new BalancedParenthesis();
+                        bp.BalancedParenthesisDemo();
+                        break;
+                    case 4:
+                        BankingCashCounter bcc = new BankingCashCounter();
+                        bcc.BankingCashCounterDemo();
+                        break;
+                    case 5:
+                        PalindromeDeque pd = new PalindromeDeque();
+                        pd.PalindromeDequeDemo();
+                        break;
+                    case 6:
+                        HashMaps hm = new HashMaps();
+                        hm.HashMapsDemo();
                         break;
                     default:
                         Console.WriteLine("Not yet created");

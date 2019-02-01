@@ -54,7 +54,7 @@ namespace DataStructures
                 int search = Utility.IsInteger(Console.ReadLine());                
                 intlist.Add(search);                               
                 intlist.Sort();
-                
+                                
                 string result = string.Empty;
                 
                 foreach (int s in intlist)
@@ -74,10 +74,12 @@ namespace DataStructures
                 Console.WriteLine("The process cannot be completed because " + e.Message);
             }
         }
+        /// <summary>
+        /// Ordereds the linked list demo.
+        /// </summary>
         public void OrderedLinkedListDemo()
         {
             string path = "C:\\Users\\Admin\\source\\repos\\DataStructures\\OrderedListInt.txt";
-
             StreamReader sr = new StreamReader(path);
             string read = sr.ReadLine();
             sr.Close();
@@ -89,31 +91,46 @@ namespace DataStructures
                 intlist.AddLast(s);
                 
             }
-            Console.WriteLine("Enter the integer to be added ");
-            int search = Utility.IsInteger(Console.ReadLine());
-            intlist.AddLast(search);
+            Console.WriteLine("Fetched list of numbers");
             foreach (int s in intlist)
             {
-                ilist.Add(s);
+                Console.Write(s+ " ");
             }
-            ilist.Sort();
+            Console.WriteLine();
+            Console.WriteLine("Enter the integer to be searched ");
+            int search = Utility.IsInteger(Console.ReadLine());
+            bool flag = false;
+            foreach (int s in intlist)
+            {
+                if (s == search)
+                {
+                    intlist.Remove(search);
+                    flag = true;
+                    break;
+                }
+            }
+            //// if not found
+            if (flag == false)
+            {
+                intlist.AddLast(search);
+            }
+           
+            ilist = intlist.OrderBy(c => c).ToList();
+            
+                       
             intlist.Clear();
             foreach (int s in ilist)
             {
                 intlist.AddLast(s);
-            }
+            } 
 
-            string result = string.Empty;
-            int i = 0;
+            string result = string.Empty;            
             foreach (int s in intlist)
             {
                 result = result + s.ToString();
-                i++;
-                if (i != (intlist.Count))
-                {
-                    result = result + " ";
-                }
+                result = result + " ";
             }
+            result=result.Trim();            
 
             Utility.WriteToFile(result, path);
             //intlist.
