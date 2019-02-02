@@ -877,11 +877,21 @@ namespace DataStructures
         /// <param name="path">The path.</param>
         public static void WriteToFile(string s, string path)
         {
-            StreamWriter sw = new StreamWriter(@path);
+            StreamWriter sw = new StreamWriter(@path, append: true);
             sw.WriteLine(s);
             sw.Close();
         }
 
+        public static void ClearFile(string path)
+        {
+            File.WriteAllText(path,"");
+        }
+
+        /// <summary>
+        /// Determines whether the specified expression is expression.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <returns></returns>
         public static string IsExpression(string expression)
         {
             String word = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'$#@!~`:;?";
