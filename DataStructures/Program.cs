@@ -17,7 +17,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             int i, number;
-            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" };
+            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" , "BinarySearchTree" };
             do
             {
                 //// printing the names of programs
@@ -56,6 +56,10 @@ namespace DataStructures
                     case 6:
                         HashMaps hm = new HashMaps();
                         hm.HashMapsDemo();
+                        break;
+                    case 7:
+                        BinarySearchTree bst = new BinarySearchTree();
+                        bst.BinarySearchTreeDemo();
                         break;
                     default:
                         Console.WriteLine("Not yet created");

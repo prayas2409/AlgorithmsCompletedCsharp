@@ -27,27 +27,61 @@ namespace DataStructures
             }
             Console.WriteLine();
 
+            Console.WriteLine("Enter the number to be searched");
+            int search = Utility.IsInteger(Console.ReadLine());
+            string stringfind = search.ToString();
+
             Hashtable hashMap = new Hashtable();
+
             foreach (int i in numbers)
             {
                 hashMap[i % 11] = hashMap[i % 11] + i.ToString() + " ";
             }
 
-           
+            Console.WriteLine("printing hashmap before search");
+            foreach (DictionaryEntry de in hashMap)
+            {
+                Console.WriteLine(de.Key + ":" + de.Value);
+            }
+
+
+            Console.WriteLine("hashMap.ContainsValue "+ hashMap[search % 11].ToString().Contains(stringfind));
+            if (hashMap.ContainsKey((search%11)) && hashMap[search%11].ToString().Contains(stringfind))
+            {
+                string temp = hashMap[search % 11].ToString();
+
+                temp = temp.Remove(temp.LastIndexOf(stringfind), stringfind.Length);
+                if(temp==" " || temp.Length == 0)
+                {
+                    hashMap.Remove(search % 11);
+                }
+                else
+                {
+                    hashMap[search % 11] = temp;
+                }
+            }
+            else
+            {
+                hashMap[search % 11] = hashMap[search % 11] + stringfind + " ";
+            }
+
             string result = string.Empty;
             path = "C:\\Users\\Admin\\source\\repos\\DataStructures\\hashmapresult.txt";
             ////clear the contents of the file
             Utility.ClearFile(path);
-
+            result = string.Empty;
             Console.WriteLine("printing hashmap");
             foreach (DictionaryEntry de in hashMap)
             {
-                result = de.Key + " : " + de.Value.ToString();
-                Console.WriteLine(result);
-                Utility.WriteToFile(result,path);
-                result = string.Empty;
+                Console.WriteLine(de.Key + ":" + de.Value);
             }
 
+            foreach (DictionaryEntry de in hashMap)
+            {
+                result = result + de.Value.ToString()+" ";
+            }
+            result.Trim();
+            Utility.WriteToFile(result, path);
         }
     }
 }
