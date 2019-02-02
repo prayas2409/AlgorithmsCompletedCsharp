@@ -25,7 +25,7 @@ namespace DataStructures
         /// <returns>an integer number</returns>
         public static int IsInteger(string input)
         {
-            ///test
+            ///testting data sructures
             if (int.TryParse(input, out int num))
             {
                 return Convert.ToInt32(input);
