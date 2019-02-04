@@ -80,12 +80,12 @@ namespace DataStructures
                 cals.AddLast(c);
             }
 
-            /*
-            Console.WriteLine("After addint to linklist");
+            //// adding spaces to the places where there should not  be any vale
+            
             i = 0;
             foreach (Calender o in cals)
             {
-                if (i < indexoffirst)
+                if (i < indexoffirst && i<7)
                 {
                     o.AddSpace();
                 }
@@ -95,7 +95,7 @@ namespace DataStructures
                 }
                 i++;
             }
-            */
+            
 
             Console.WriteLine("Printing the calender Vertically");
             foreach (Calender o in cals)

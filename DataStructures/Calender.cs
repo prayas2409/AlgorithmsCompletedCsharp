@@ -47,7 +47,7 @@ namespace DataStructures
 
             while (this.days[i].Equals(null) != false) i++;
             
-            for (j = i-1; j >= 1 ; j--)
+            for (j=5; j >= 1 ; j--)
             {
                 this.days[j] = this.days[j - 1];
             }

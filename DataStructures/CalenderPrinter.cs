@@ -41,7 +41,7 @@ namespace DataStructures
             }
             if(flag == false)
             {
-                Console.WriteLine("THe string you mentioned is not a month");
+                Console.WriteLine("The string you mentioned is not a month");
                     
                 return;
             }

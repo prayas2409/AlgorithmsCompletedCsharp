@@ -104,7 +104,7 @@ namespace DataStructures
                 cals.RemoveFirst();
             }  
 
-            Console.WriteLine("Printing stack 1");
+            Console.WriteLine("Printing stack 1 ");
 
             foreach (Calender o in stack1)
             {
