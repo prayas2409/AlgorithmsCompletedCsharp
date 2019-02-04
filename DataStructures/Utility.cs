@@ -77,23 +77,19 @@ namespace DataStructures
         /// <param name="day">The date on the day</param>
         /// <param name="month">Month in the date</param>
         /// /// <param name="year">Year in the date</param>
-        public static string DayOfWeek(int day, int month, int year)
+        public static string DayOfWeek(int d, int m, int y)
         {
             int y0, x, m0, d0;
-            y0 = year - (14 - month) / 12;
-            x = y0 + ((y0 / 4) - ((y0 / 100) + (y0 / 400)));
-            m0 = month + (12 * (14 - month)) / 12 - 2;
-            d0 = (day + x + (31 * month / 12)) % 7;
-            
+            y0 = y - ((14 - m) / 12);
+            x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+            m0 = m + (12 * ((14 - m) / 12)) - 2;
+            d0 = (d + x + (31 * m0 / 12)) % 7;                        
             string[] months = new string[]
             {
                 "January", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November",
                         "December"
-            };
-            Console.WriteLine("month val is " + month + " and month is " + months[month]);
-            string[] days = { "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun" };
-            Console.WriteLine(" for "+day+ "weekday : "+days[d0]);
-
+            };            
+            string[] days = { "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat" };
             return days[d0];
         }
 
@@ -273,14 +269,16 @@ namespace DataStructures
         /// </summary>
         /// <param name="string1">it is first string as argument</param>
         /// <param name="string2">2nd string argument to check if its anagram </param>
-        public static void Anagram(string string1, string string2)
+        public static bool Anagram(string string1, string string2)
         {
             int i, flag = 0;
+
+            if(string1.Length ==1 || string2.Length ==1)
 
             if (string1.Length != string2.Length)
             {
                 ////System.out.println("Strings are not anagrams");
-                return;
+                return false;
             }
 
             char[] aS1 = new char[string1.Length];
@@ -309,8 +307,9 @@ namespace DataStructures
 
             if (flag == 0)
             {
-                Console.WriteLine(string1 + " and " + string2 + " are anagrams ");
+                return true;
             }
+            else return false;
         }
 
         /// <summary>
@@ -962,6 +961,32 @@ namespace DataStructures
                 flag = true;
             }
             return expression;
+        }
+
+        public static bool IsPrime(int number)
+        {
+            int counter;
+            bool flag = true;
+
+            switch (number)
+            {
+                case 0:
+                    return false;
+                case 1:
+                    return false;
+                case 2:
+                    return true;
+            }
+            for (counter = 2; counter <= number/2; counter++)
+            {
+                //// if counter is  not prime
+                if (number % counter == 0)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;              
         }
     }
 }

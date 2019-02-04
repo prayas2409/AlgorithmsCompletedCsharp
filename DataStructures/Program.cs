@@ -17,7 +17,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             int i, number;
-            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" , "BinarySearchTree", "CalenderPrinter" };
+            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" , "BinarySearchTree", "CalenderPrinter", " CalenderLinkedList", " CalenderStack", "Prime2DArray", "PrimeAnagram" , " PrimeAnagramStack", "PrimeAnagramQueue" };
             do
             {
                 //// printing the names of programs
@@ -66,10 +66,34 @@ namespace DataStructures
                         cp.CalenderPrinterDemo();
                         break;
                     case 9:
-                        Utility.DayOfWeek(1,3,2019);
+                        CalenderLinkedList cll = new CalenderLinkedList();
+                        cll.CalenderLinkedlistDemo();
+                        break;
+                    case 10:
+                        CalenderStack cs = new CalenderStack();
+                        cs.CalenderStackDemo();
+                        break;
+                    case 11:
+                        Prime2DArray p2d = new Prime2DArray();
+                        p2d.Prime2DarrayDemo();
+                        break;
+                    case 12:
+                        PrimeAnagram pa = new PrimeAnagram();
+                        pa.PrimeAnagramDemo();
+                        break;
+                    case 13:
+                        PrimeAnagramStack pas = new PrimeAnagramStack();
+                        pas.PrimeAnagramStackDemo();
+                        break;
+                    case 14:
+                        PrimeAnagramQueue paq = new PrimeAnagramQueue();
+                        paq.PrimeAnagramQueueDemo();
+                        break;
+                    case 15:                       
+                        Console.WriteLine(Utility.DayOfWeek(1,4,2019));
                         break;
                     default:
-                        Console.WriteLine("Not yet created");
+                        Console.WriteLine("Not yet created");                        
                         break;
 
                 }

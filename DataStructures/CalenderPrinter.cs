@@ -14,12 +14,17 @@ namespace DataStructures
                "jan" , "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"
             };
             //// storing days
-            string[] days = { "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun" };
+            string[] days = { "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"  };
             //// starting date
             int day = 1, year = 0;
             Console.WriteLine("Enter the year");
             year = Utility.IsIntegerInRange(Console.ReadLine(), 999, 10000);
-            Console.WriteLine("Enter the month");
+            foreach (string s in months)
+            {
+                Console.Write( s + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Enter the month from the above");
             string month = Utility.IsString(Console.ReadLine());
             month = month.ToLower();
             bool flag = false;
@@ -36,26 +41,11 @@ namespace DataStructures
             }
             if(flag == false)
             {
-                monthint = 0;
+                Console.WriteLine("THe string you mentioned is not a month");
+                    
+                return;
             }
-            //// taking the input untill its a  month
-            while (flag == false)
-            {
-                monthint = 0;
-                Console.WriteLine("The string provided is not a month please try again");
-                month = Utility.IsString(Console.ReadLine());
-                flag = false;              
-                foreach (string s in months)
-                {
-                    monthint++;
-                    if (month.Equals(s))
-                    {
-                        flag = true;
-                        break;
-                    }                    
-                }
-            }
-            
+           
             int febdays = 28,i=0;
             if (Utility.LeapYear(year)==true)
             {
@@ -78,7 +68,7 @@ namespace DataStructures
                 i++;
             }
 
-            for (counter = 1; counter <= numdaysinmonth[monthint]; counter++)
+            for (counter = 1; counter <= numdaysinmonth[monthint+1]; counter++)
             {
                 daycalulated = Utility.DayOfWeek(day, monthint+1, year);
                 for (i = 0; i < 7; i++)
@@ -87,8 +77,8 @@ namespace DataStructures
                     {
                         j = 1;
                         while (calender[j, i] != null) j++;
-                        calender[j, i] = day.ToString()+"\t";
-                     }                    
+                        calender[j, i] = day.ToString() + "\t";
+                    }                    
                 }
                 day++;
             }

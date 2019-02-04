@@ -6,20 +6,52 @@ namespace DataStructures
 {
     class Calender
     {
-        string[] months = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
+        string week;
+        string[] days = new string[8];
 
-        public void CalenderDemo()
+        public void SetWeekDay(string weekday)
         {
-            int year;
-            Console.WriteLine("Enter the year");
-            year = Utility.IsIntegerInRange(Console.ReadLine(), 999, 10000);
-            Console.WriteLine("Enter the month");
-            string month = Utility.IsString(Console.ReadLine());
-            month.ToLower();
-            if (month.Equals(months))
-            {
+            this.week = weekday;
+        }
 
+        public string ReturnDayofWeek()
+        {
+            return this.week;
+        }
+        
+        public string[] ReturnDays()
+        {
+            //string days1 = this.days.ToString();
+            //foreach (string s in days) Console.Write(s.ToString());
+            return days;
+        }
+
+        public void AddDays(int day)
+        {
+            int i = 0;
+            while (this.days[i] != null)
+            {
+                i++;
             }
+
+            this.days[i] = day.ToString() + "\t";
+        }
+        public void AddDays(string day)
+        {
+            this.days[0] = day;
+        }
+
+        public void AddSpace()
+        {
+            int i = 0, j=0;
+
+            while (this.days[i].Equals(null) != false) i++;
+            
+            for (j = i-1; j >= 1 ; j--)
+            {
+                this.days[j] = this.days[j - 1];
+            }
+            this.days[0] = "\t";
         }
     }
 }

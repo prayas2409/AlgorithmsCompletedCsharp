@@ -37,7 +37,7 @@ namespace DataStructures
                         if (sample[k] > sample[j]) right++;
                         
                     }
-                  count= count+ trees[left] * trees[right] ;
+                  count = count+ trees[left] * trees[right] ;
                 }
 
                 trees[i] = count;
