@@ -17,7 +17,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             int i, number;
-            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" , "BinarySearchTree" };
+            string[] programs = { "Unsorted List First enter data to file", "OrderedList", "BalancedParenthesis", "BankingCashCounter", "PalindromeDeque", "HashMaps" , "BinarySearchTree", "CalenderPrinter" };
             do
             {
                 //// printing the names of programs
@@ -60,6 +60,13 @@ namespace DataStructures
                     case 7:
                         BinarySearchTree bst = new BinarySearchTree();
                         bst.BinarySearchTreeDemo();
+                        break;
+                    case 8:
+                        CalenderPrinter cp = new CalenderPrinter();
+                        cp.CalenderPrinterDemo();
+                        break;
+                    case 9:
+                        Utility.DayOfWeek(1,3,2019);
                         break;
                     default:
                         Console.WriteLine("Not yet created");

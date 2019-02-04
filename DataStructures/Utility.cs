@@ -41,9 +41,9 @@ namespace DataStructures
                 return Convert.ToInt32(input);
             }
         }
-        public static int IsIntegerInRange(string input,int min,int max)
+        public static int IsIntegerInRange(string input, int min, int max)
         {
-            if (int.TryParse(input, out int num) && (num >= min && num<= max))
+            if (int.TryParse(input, out int num) && (num >= min && num <= max))
             {
                 return Convert.ToInt32(input);
             }
@@ -52,13 +52,13 @@ namespace DataStructures
                 bool flag = false;
                 while (flag == false)
                 {
-                    if(int.TryParse(input, out num)== false)
+                    if (int.TryParse(input, out num) == false)
                     {
                         Console.WriteLine("You have not entered an integer number please try again");
                         input = Console.ReadLine();
                         continue;
                     }
-                    if((num < min || num > max))
+                    if ((num < min || num > max))
                     {
                         Console.WriteLine("Value is not in range");
                         input = Console.ReadLine();
@@ -72,13 +72,40 @@ namespace DataStructures
         }
 
         /// <summary>
+        /// Checks day of the week on the date provided
+        /// </summary>
+        /// <param name="day">The date on the day</param>
+        /// <param name="month">Month in the date</param>
+        /// /// <param name="year">Year in the date</param>
+        public static string DayOfWeek(int day, int month, int year)
+        {
+            int y0, x, m0, d0;
+            y0 = year - (14 - month) / 12;
+            x = y0 + ((y0 / 4) - ((y0 / 100) + (y0 / 400)));
+            m0 = month + (12 * (14 - month)) / 12 - 2;
+            d0 = (day + x + (31 * month / 12)) % 7;
+            
+            string[] months = new string[]
+            {
+                "January", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+                        "December"
+            };
+            Console.WriteLine("month val is " + month + " and month is " + months[month]);
+            string[] days = { "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun" };
+            Console.WriteLine(" for "+day+ "weekday : "+days[d0]);
+
+            return days[d0];
+        }
+
+
+        /// <summary>
         /// Determines whether /[is positive integer] [the specified input].
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
         public static int IsPositiveInteger(string input)
         {
-            if (int.TryParse(input, out int num) && (num > 0 ))
+            if (int.TryParse(input, out int num) && (num > 0))
             {
                 return Convert.ToInt32(input);
             }
@@ -640,29 +667,6 @@ namespace DataStructures
         }
 
         /// <summary>
-        /// Checks day of the week on the date provided
-        /// </summary>
-        /// <param name="day">The date on the day</param>
-        /// <param name="month">Month in the date</param>
-        /// /// <param name="year">Year in the date</param>
-        public static void DayOfWeek(int day, int month, int year)
-        {
-            int y0, x, m0, d0;
-            y0 = year - ((14 - month) / 12);
-            x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
-            m0 = month + (12 * ((14 - month) / 12)) - 2;
-            d0 = (day + x + ((31 * month) / 12)) % 7;
-
-            string[] months = new string[]
-            {
-                "January", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November",
-                        "December"
-            };
-            string[] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-            Console.WriteLine("The day on this date is " + days[d0 - 1]);
-        }
-
-        /// <summary>
         /// Finds out monthly payment to be made
         /// </summary>
         /// <param name="p">The principal loan</param>
@@ -690,11 +694,53 @@ namespace DataStructures
         }
 
         /// <summary>
-        /// converts the number to binary printing 0 and 1
+        /// This method checks if the year is leap year
         /// </summary>
-        /// <param name="num">THe number to be convert the to binary</param>
-        /// <returns>The binary array</returns>
-        public static int[] ToBinary(int num)
+        public static bool LeapYear(int year)
+        {
+            try
+            {
+
+                ////checks if the number is of 4 digits
+                while (year < 999 && year > 10000)
+                {
+                    Console.WriteLine(" The year should be a 4 digit number please try again");
+                }
+
+                if (year % 100 == 0)
+                {
+                    if (year % 400 == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else if (year % 4 == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        } 
+    
+
+    /// <summary>
+    /// converts the number to binary printing 0 and 1
+    /// </summary>
+    /// <param name="num">THe number to be convert the to binary</param>
+    /// <returns>The binary array</returns>
+    public static int[] ToBinary(int num)
         {
             int count, i = 0, power = 1;
 
