@@ -109,7 +109,7 @@ namespace DataStructures
             {
                 while (int.TryParse(input, out num) == false || num <= 0)
                 {
-                    Console.WriteLine("You have not entered a number more than 0 please try again");
+                    Console.WriteLine("You have not entered a number greater than 0 please try again");
                     input = Console.ReadLine();
                 }
 

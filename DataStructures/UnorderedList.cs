@@ -32,7 +32,7 @@ namespace DataStructures
                 sw.WriteLine(input);
                 sw.Close();
                 */
-                int count = 0, i = 0;
+                int count = 0;
                 string path = "C:\\Users\\Admin\\source\\repos\\DataStructures\\UnorderedList.txt";
                 string read = Utility.ReadfromFile(path);
                 Console.WriteLine("I read : " + read);

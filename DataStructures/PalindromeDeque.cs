@@ -22,36 +22,43 @@ namespace DataStructures
         /// </summary>
         public void PalindromeDequeDemo()
         {
-            Console.WriteLine("Enter the string to check if its a plaindrome");
-            string input = Utility.IsString(Console.ReadLine());
-            LinkedList<char> string1 = new LinkedList<char>();
-            bool flag = true;
-            foreach(char c in input)
+            try
             {
-                string1.AddLast(c);
+                Console.WriteLine("Enter the string to check if its a plaindrome");
+                string input = Utility.IsString(Console.ReadLine());
+                LinkedList<char> string1 = new LinkedList<char>();
+                bool flag = true;
+                foreach (char c in input)
+                {
+                    string1.AddLast(c);
+                }
+                Console.WriteLine("String in list is ");
+                foreach (char c in string1)
+                {
+                    Console.Write(c + " ");
+                }
+                while (string1.Count > 1)
+                {
+                    if (string1.First.Value.Equals(string1.Last.Value))
+                    {
+                        string1.RemoveFirst();
+                        string1.RemoveLast();
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} is not a palindrome ", input);
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag == true)
+                {
+                    Console.WriteLine("The string is a palindrome");
+                }
             }
-            Console.WriteLine("String in list is ");
-            foreach (char c in string1)
+            catch (Exception e)
             {
-                Console.Write(c + " ");
-            }            
-            while (string1.Count > 1)
-            {
-                if(string1.First.Value.Equals(string1.Last.Value))
-                {
-                    string1.RemoveFirst();                                        
-                    string1.RemoveLast();                    
-                }
-                else
-                {
-                    Console.WriteLine("{0} is not a palindrome ", input);
-                    flag = false;
-                    break;                       
-                }
-            }            
-            if(flag == true)
-            {
-                Console.WriteLine("The string is a palindrome");
+                Console.WriteLine("The process is stopped because " + e);
             }
         }        
     }

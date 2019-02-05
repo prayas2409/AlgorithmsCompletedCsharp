@@ -79,61 +79,68 @@ namespace DataStructures
         /// </summary>
         public void OrderedLinkedListDemo()
         {
-            string path = "C:\\Users\\Admin\\source\\repos\\DataStructures\\OrderedListInt.txt";
-            StreamReader sr = new StreamReader(path);
-            string read = sr.ReadLine();
-            sr.Close();
-            int[] filetointarray = Utility.StringToIntArray(read);
-            List<int> ilist = new List<int>();
-            LinkedList<int> intlist = new LinkedList<int>();
-            foreach (int s in filetointarray)
+            try
             {
-                intlist.AddLast(s);
-                
-            }
-            Console.WriteLine("Fetched list of numbers");
-            foreach (int s in intlist)
-            {
-                Console.Write(s+ " ");
-            }
-            Console.WriteLine();
-            Console.WriteLine("Enter the integer to be searched ");
-            int search = Utility.IsInteger(Console.ReadLine());
-            bool flag = false;
-            foreach (int s in intlist)
-            {
-                if (s == search)
+                string path = "C:\\Users\\Admin\\source\\repos\\DataStructures\\OrderedListInt.txt";
+                StreamReader sr = new StreamReader(path);
+                string read = sr.ReadLine();
+                sr.Close();
+                int[] filetointarray = Utility.StringToIntArray(read);
+                List<int> ilist = new List<int>();
+                LinkedList<int> intlist = new LinkedList<int>();
+                foreach (int s in filetointarray)
                 {
-                    intlist.Remove(search);
-                    flag = true;
-                    break;
+                    intlist.AddLast(s);
+
                 }
-            }
-            //// if not found
-            if (flag == false)
-            {
-                intlist.AddLast(search);
-            }
-           
-            ilist = intlist.OrderBy(c => c).ToList();
-            
-                       
-            intlist.Clear();
-            foreach (int s in ilist)
-            {
-                intlist.AddLast(s);
-            } 
+                Console.WriteLine("Fetched list of numbers");
+                foreach (int s in intlist)
+                {
+                    Console.Write(s + " ");
+                }
+                Console.WriteLine();
+                Console.WriteLine("Enter the integer to be searched ");
+                int search = Utility.IsInteger(Console.ReadLine());
+                bool flag = false;
+                foreach (int s in intlist)
+                {
+                    if (s == search)
+                    {
+                        intlist.Remove(search);
+                        flag = true;
+                        break;
+                    }
+                }
+                //// if not found
+                if (flag == false)
+                {
+                    intlist.AddLast(search);
+                }
 
-            string result = string.Empty;            
-            foreach (int s in intlist)
-            {
-                result = result + s.ToString();
-                result = result + " ";
-            }
-            result=result.Trim();            
+                ilist = intlist.OrderBy(c => c).ToList();
 
-            Utility.WriteToFile(result, path);
-            //intlist.
+
+                intlist.Clear();
+                foreach (int s in ilist)
+                {
+                    intlist.AddLast(s);
+                }
+
+                string result = string.Empty;
+                foreach (int s in intlist)
+                {
+                    result = result + s.ToString();
+                    result = result + " ";
+                }
+                result = result.Trim();
+
+                Utility.WriteToFile(result, path);
+                //intlist.
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process is stopped because " + e);
+            }
         }
     }
 }
