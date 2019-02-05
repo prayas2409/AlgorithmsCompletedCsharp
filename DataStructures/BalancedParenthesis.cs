@@ -54,15 +54,15 @@ namespace DataStructures
                             brackets.Pop();
                             break;
                     }
-                    //// if stack empty then parenthesis are balanced
-                    if (brackets.Count == 0)
-                    {
-                        Console.WriteLine("The expression is balanced");
-                    }
-                    else
-                    {
-                        Console.WriteLine("The expression is not balanced");
-                    }
+                    //// if stack empty then parenthesis are balanced                    
+                }
+                if (brackets.Count == 0)
+                {
+                    Console.WriteLine("The expression is balanced");
+                }
+                else
+                {
+                    Console.WriteLine("The expression is not balanced");
                 }
             }
             catch (Exception e)
