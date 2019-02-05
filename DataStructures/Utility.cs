@@ -8,8 +8,8 @@
 namespace DataStructures
 {
     using System;
-    using System.IO;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
     using System.Text.RegularExpressions;
 
@@ -25,7 +25,7 @@ namespace DataStructures
         /// <returns>an integer number</returns>
         public static int IsInteger(string input)
         {
-            ///testting data sructures
+            //// testting data sructures
             if (int.TryParse(input, out int num))
             {
                 return Convert.ToInt32(input);
@@ -41,6 +41,14 @@ namespace DataStructures
                 return Convert.ToInt32(input);
             }
         }
+
+        /// <summary>
+        /// Determines whether the integer is in range of [the specified input].
+        /// </summary>
+        /// <param name="input">The input string</param>
+        /// <param name="min">The minimum range for the number</param>
+        /// <param name="max">The maximum range for the number</param>
+        /// <returns>the integer in the range</returns>
         public static int IsIntegerInRange(string input, int min, int max)
         {
             if (int.TryParse(input, out int num) && (num >= min && num <= max))
@@ -58,12 +66,14 @@ namespace DataStructures
                         input = Console.ReadLine();
                         continue;
                     }
-                    if ((num < min || num > max))
+
+                    if (num < min || num > max)
                     {
                         Console.WriteLine("Value is not in range");
                         input = Console.ReadLine();
                         continue;
                     }
+
                     flag = true;
                 }
 
@@ -74,9 +84,10 @@ namespace DataStructures
         /// <summary>
         /// Checks day of the week on the date provided
         /// </summary>
-        /// <param name="day">The date on the day</param>
-        /// <param name="month">Month in the date</param>
-        /// /// <param name="year">Year in the date</param>
+        /// <param name="d">The date on the day</param>
+        /// <param name="m">Month in the date</param>
+        /// /// <param name="y">Year in the date</param>
+        /// <returns>the day of the week</returns>
         public static string DayOfWeek(int d, int m, int y)
         {
             int y0, x, m0, d0;
@@ -93,12 +104,11 @@ namespace DataStructures
             return days[d0];
         }
 
-
         /// <summary>
-        /// Determines whether /[is positive integer] [the specified input].
+        /// Determines whether element is positive integer.
         /// </summary>
-        /// <param name="input">The input.</param>
-        /// <returns></returns>
+        /// <param name="input">The input is the string to check if it is greater than 0 and is integer</param>
+        /// <returns>The positive integer</returns>
         public static int IsPositiveInteger(string input)
         {
             if (int.TryParse(input, out int num) && (num > 0))
@@ -116,6 +126,7 @@ namespace DataStructures
                 return Convert.ToInt32(input);
             }
         }
+
         /// <summary>
         /// The method is to validate the input double
         /// </summary>
@@ -269,11 +280,15 @@ namespace DataStructures
         /// </summary>
         /// <param name="string1">it is first string as argument</param>
         /// <param name="string2">2nd string argument to check if its anagram </param>
+        /// <returns>True if both are anagrams</returns>
         public static bool Anagram(string string1, string string2)
         {
             int i, flag = 0;
-
-            if(string1.Length ==1 || string2.Length ==1)
+            //// single digit elements are mot anagrams
+            if (string1.Length == 1 || string2.Length == 1)
+            {
+                return false;
+            }
 
             if (string1.Length != string2.Length)
             {
@@ -293,13 +308,14 @@ namespace DataStructures
             {
                 aS2[i] = string2[i];
             }
-
+            //// sorting each string and will compare each element at the same index
             aS1 = SortChar(aS1);
             aS2 = SortChar(aS2);
             for (i = 0; i < string1.Length; i++)
             {
                 if (aS1[i] != aS2[i])
                 {
+                    //// if not same
                     flag = 1;
                     break;
                 }
@@ -309,7 +325,10 @@ namespace DataStructures
             {
                 return true;
             }
-            else return false;
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -368,184 +387,8 @@ namespace DataStructures
             }
 
             return array;
-        }
-
-        /// <summary>
-        /// Sorts integer array using insertion sort
-        /// </summary>
-        /// <param name="array">This is the array in which insertion sort has to be performed</param>
-        /// <param name="length">This is the length of the array</param>
-        /// <returns>it returns the sorted array</returns>
-        public static int[] InsertionSortInt(int[] array, int length)
-        {
-            int i, j, temp, index;
-
-            for (j = 0; j < length; j++)
-            {
-                for (i = j + 1; i < length; i++)
-                {
-                    if (array[j] > array[i])
-                    {
-                        temp = array[i];
-                        index = i;
-                        array = SwipeInt(array, index, i);
-                        array[j] = temp;
-                    }
-                }
-            }
-
-            return array;
-        }
-
-        /// <summary>
-        /// Sorts String array using insertion sort
-        /// </summary>
-        /// <param name="array">The string array on which the commenting has to be done</param>
-        /// <param name="length">The length of string array</param>
-        /// <returns>The sorted string</returns>
-        public static string[] InsertionSortString(string[] array, int length)
-        {
-            int i, j, index;
-            string temp;
-            for (j = 0; j < length - 1; j++)
-            {
-                for (i = j + 1; i < length; i++)
-                {
-                    if (string.Compare(array[j], array[i]) > 1)
-                    {
-                        temp = array[i];
-                        index = i;
-                        //// swipe the array after the index value to insert value at desired position
-                        array = SwipeString(array, index, i);
-                        array[j] = temp;
-                    }
-                }
-            }
-
-            return array;
-        }
-
-        /// <summary>
-        /// Sorts integer array using Bubble sort
-        /// </summary>
-        /// <param name="array">The array to be sorted</param>
-        /// <param name="length">length of the input array</param>
-        /// <returns>The sorted array</returns>
-        public static int[] BubbleSortInt(int[] array, int length)
-        {
-            int i, j, temp;
-            for (i = 0; i < length; i++)
-            {
-                for (j = 0; j < length - 1; j++)
-                {
-                    if (array[j] > array[j + 1])
-                    {
-                        temp = array[j + 1];
-                        array[j + 1] = array[j];
-                        array[j] = temp;
-                    }
-                }
-            }
-
-            return array;
-        }
-
-        /// <summary>
-        /// Sorts String  array using Bubble sort
-        /// </summary>
-        /// <param name="array">The array to be sorted</param>
-        /// <param name="length">length of the input array</param>
-        /// <returns>The sorted string array</returns>
-        public static string[] BubbleSortString(string[] array, int length)
-        {
-            int i, j;
-            string temp;
-            for (i = 0; i < length; i++)
-            {
-                for (j = 0; j < length - 1; j++)
-                {
-                    if (string.Compare(array[j], array[j + 1]) > 0)
-                    {
-                        temp = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temp;
-                    }
-                }
-            }
-
-            return array;
-        }
-
-        /// <summary>
-        /// Binaries the search int.
-        /// </summary>
-        /// <param name="array">The array of integers in which we need to search</param>
-        /// <param name="num">The number to be searched array</param>
-        public static void BinarySearchInt(int[] array, int num)
-        {
-            int i, length, low, high, mid;
-            array = BubbleSortInt(array, array.Length);
-            length = array.Length;
-
-            low = 0;
-            high = length - 1;
-            for (i = 0; i < (length / 2) + 1; i++)
-            {
-                mid = (low + high) / 2;
-                if (num == array[mid])
-                {
-                    Console.WriteLine("Number found at position " + (mid + 1));
-                    return;
-                }
-
-                if (num < array[mid])
-                {
-                    high = mid;
-                }
-                else
-                {
-                    low = mid + 1;
-                }
-            }
-
-            Console.WriteLine("Number not found");
-        }
-
-        /// <summary>
-        /// Searches a String in string array using Binary search
-        /// </summary>
-        /// <param name="array">The string array on which the binary search is to be done</param>
-        /// <param name="num">The array to be searched int the array</param>
-        public static void BinarySearchString(string[] array, string num)
-        {
-            int i, length, low, high, mid;
-            length = array.Length;
-            low = 0;
-            high = length - 1;
-            for (i = 0; i < length; i++)
-            {
-                mid = (low + high) / 2;
-                if (string.Compare(num, array[mid]) == 0)
-                {
-                    Console.WriteLine("string found at position " + (mid + 1));
-                    return;
-                }
-
-                if (string.Compare(num, array[mid]) < 0)
-                {
-                    Console.Write("in num<amid and amid= {0}  ", array[mid]);
-                    high = mid;
-                }
-                else
-                {
-                    Console.Write("in num>amid  and amid= {0}  ", array[mid]);
-                    low = mid + 1;
-                }
-            }
-
-            Console.WriteLine("String not found");
-        }
-
+        }       
+        
         /// <summary>
         /// checks is the number power of 2 if yes returns power else 0
         /// </summary>
@@ -693,13 +536,14 @@ namespace DataStructures
         }
 
         /// <summary>
-        /// This method checks if the year is leap year
+        /// Leaps the year.
         /// </summary>
+        /// <param name="year">The year to check is leap year</param>
+        /// <returns>true if year is leap else false</returns>
         public static bool LeapYear(int year)
         {
             try
             {
-
                 ////checks if the number is of 4 digits
                 while (year < 999 && year > 10000)
                 {
@@ -731,8 +575,7 @@ namespace DataStructures
                 Console.WriteLine(e.Message);
                 return false;
             }
-        } 
-    
+        }     
 
     /// <summary>
     /// converts the number to binary printing 0 and 1
@@ -819,14 +662,18 @@ namespace DataStructures
         /// Converts string to the array.
         /// </summary>
         /// <param name="s">The s.</param>
-        /// <returns></returns>
+        /// <returns>Converts an string to string array and returns the string array </returns>
         public static string[] StringToStringArray(string s)
         {
             int count = 0, i = 0;
             foreach (char c in s)
-            {  
-                   if(c == ' ') count++;              
+            {
+                if (c == ' ')
+                {
+                    count++;
+                }
             }
+
             string[] stringarray = new string[count + 1];
             string temp = string.Empty;
             foreach (char c in s)
@@ -842,17 +689,27 @@ namespace DataStructures
                 {
                     temp = temp + c;
                 }
+
                 stringarray[i] = temp;
             }
+
             return stringarray;
         }
 
+        /// <summary>
+        /// Strings to int array.
+        /// </summary>
+        /// <param name="read">The read.</param>
+        /// <returns>The integer array which is converted  from the string</returns>
         public static int[] StringToIntArray(string read)
         {
-            int count = 0, temp=0, i=0;
+            int count = 0, temp = 0, i = 0;
             foreach (char c in read)
             {
-                if (c == ' ') count++;
+                if (c == ' ')
+                {
+                    count++;
+                }
             }
 
             int[] filetointarray = new int[count + 1];
@@ -861,8 +718,8 @@ namespace DataStructures
             {
                 if (c != ' ')
                 {
-                    temp = temp * 10 + Convert.ToInt32(c.ToString());
-                  //  Console.Write("temp is " + temp);
+                    temp = (temp * 10) + Convert.ToInt32(c.ToString());
+                  ////  Console.Write("temp is " + temp);
                 }
                 else
                 {
@@ -870,18 +727,25 @@ namespace DataStructures
                     temp = 0;
                 }
             }
+
             filetointarray[i] = temp;
             Console.WriteLine();
             return filetointarray;
         }
 
+        /// <summary>
+        /// Converts the list of string to string.
+        /// </summary>
+        /// <param name="stringlist">The string list.</param>
+        /// <returns>string which is converted from the list of string</returns>
         public static string StringListtoString(List<string> stringlist)
         {
-            int count=0, i=0;
+            int count = 0, i = 0;
             foreach (string find in stringlist)
             {
                 count++;
             }
+
             string store = string.Empty;
 
             foreach (string find in stringlist)
@@ -904,10 +768,10 @@ namespace DataStructures
         }
 
         /// <summary>
-        /// Readfroms the file.
+        /// Reads from the file.
         /// </summary>
-        /// <param name="path">The path.</param>
-        /// <returns></returns>
+        /// <param name="path">The path from where to read</param>
+        /// <returns>the string message taken from the file</returns>
         public static string ReadfromFile(string path)
         {
             StreamReader sr = new StreamReader(@path);
@@ -928,28 +792,33 @@ namespace DataStructures
             sw.Close();
         }
 
+        /// <summary>
+        /// Clears the file.
+        /// </summary>
+        /// <param name="path">The path where the file is stored</param>
         public static void ClearFile(string path)
         {
-            File.WriteAllText(path,"");
+            File.WriteAllText(path, string.Empty);
         }
 
         /// <summary>
         /// Determines whether the specified expression is expression.
         /// </summary>
         /// <param name="expression">The expression.</param>
-        /// <returns></returns>
+        /// <returns>The string if its an expression</returns>
         public static string IsExpression(string expression)
         {
-            String word = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'$#@!~`:;?";
+            string word = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'$#@!~`:;?";
             bool flag = false;
-            while(flag == false)
+            while (flag == false)
             {
-                if(expression.Contains(" "))
+                if (expression.Contains(" "))
                 {
                     Console.WriteLine("Expression should not contain space please try again");
-                    expression=Console.ReadLine();
+                    expression = Console.ReadLine();
                 }
-                foreach(char c in word)
+
+                foreach (char c in word)
                 {
                     if (expression.Contains(c))
                     {
@@ -958,11 +827,20 @@ namespace DataStructures
                         break;
                     }
                 }
+
                 flag = true;
             }
+
             return expression;
         }
 
+        /// <summary>
+        /// Determines whether the specified number is prime.
+        /// </summary>
+        /// <param name="number">The number to be checked as prime</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is prime; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsPrime(int number)
         {
             int counter;
@@ -977,7 +855,8 @@ namespace DataStructures
                 case 2:
                     return true;
             }
-            for (counter = 2; counter <= number/2; counter++)
+
+            for (counter = 2; counter <= number / 2; counter++)
             {
                 //// if counter is  not prime
                 if (number % counter == 0)
@@ -986,6 +865,7 @@ namespace DataStructures
                     break;
                 }
             }
+
             return flag;              
         }
     }

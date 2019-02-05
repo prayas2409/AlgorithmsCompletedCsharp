@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BankingCashCounter.cs" company="Bridgelabz">
+// <copyright file="CalenderLinkedList.cs" company="Bridgelabz">
 //   Copyright © 2018 Company
 // </copyright>
 // <creator name="Prayas Pagade"/>
@@ -13,17 +13,20 @@ namespace DataStructures
     using System.Text;
 
     /// <summary>
-    /// Class to implement the calender using Linked list 
+    /// Class to implement the calendar using Linked list 
     /// </summary>
-    class CalenderLinkedList
+    public class CalenderLinkedList
     {
+        /// <summary>
+        /// To execute calendar using linked list.
+        /// </summary>
         public void CalenderLinkedlistDemo()
         {
             try
             {
                 string[] months = new string[]
                {
-               "jan" , "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"
+               "jan", "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"
                };
                 //// storing days of week
                 string[] days = { "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat" };
@@ -44,20 +47,24 @@ namespace DataStructures
                         flag = true;
                         break;
                     }
+
                     monthint++;
                 }
+
                 if (flag == false)
                 {
                     Console.WriteLine("The string you mentioned is not a month");
 
                     return;
                 }
+
                 int febdays = 28, i = 0;
                 //// if leapyear feb has 29 days
                 if (Utility.LeapYear(year) == true)
                 {
                     febdays = 29;
                 }
+
                 int[] numdaysinmonth = { 31, febdays, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
                 int day = 1;
                 Utility.DayOfWeek(day, monthint, year);
@@ -65,9 +72,6 @@ namespace DataStructures
                 int counter = 0;
                 string daycalulated = Utility.DayOfWeek(1, monthint + 1, year);
                 int indexoffirst = 0;
-
-
-
                 //// Console.WriteLine("the day calculated is {0}, index of first is {1}", daycalulated, indexoffirst);
                 Calender c;
                 for (counter = 1; counter <= 7; counter++)
@@ -82,8 +86,10 @@ namespace DataStructures
                             c.AddDays(day);
                         }
                     }
+
                     cals.AddLast(c);
                 }
+
                 indexofcurrent = 10;
                 daycalulated = Utility.DayOfWeek(1, monthint + 1, year);
                 foreach (string s in days)
@@ -92,24 +98,27 @@ namespace DataStructures
                     {
                         break;
                     }
+
                     i++;
                 }
+
                 indexoffirst = i;
                 foreach (Calender cal in cals)
                 {
                     i = 0;
                     foreach (string e in days)
                     {
-                        if (e.Equals(daycalulated) == true) break;
+                        if (e.Equals(daycalulated) == true)
+                        {
+                            break;
+                        }
+
                         i++;
                         if (indexofcurrent < i)
                         {
                             cal.AddSpace();
-
                         }
-
                     }
-
                 }
                                                              
                 Console.WriteLine("After addint to linklist");
@@ -124,16 +133,20 @@ namespace DataStructures
                     {
                         break;
                     }
+
                     i++;
-                }
-                
+                }      
 
                 Console.WriteLine("Printing the calender Vertically");
                 foreach (Calender o in cals)
                 {
                     Console.Write(o.ReturnDayofWeek() + "\t");
                     string[] temp = o.ReturnDays();
-                    foreach (string s in temp) Console.Write(s);
+                    foreach (string s in temp)
+                    {
+                        Console.Write(s);
+                    }
+
                     Console.WriteLine();
                 }
             }

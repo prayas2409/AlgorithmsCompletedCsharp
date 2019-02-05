@@ -1,11 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CustomLinkedListExecute.cs" company="Bridgelabz">
+//   Copyright © 2018 Company
+// </copyright>
+// <creator name="Prayas Pagade"/>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DataStructures
 {
-    class CustomLinkedListExecute
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The class is to check the created Linked List
+    /// </summary>
+    public class CustomLinkedListExecute
     {
+        /// <summary>
+        /// Method to execute the Linked list
+        /// </summary>
         public void CustomLinkedListExecuteDemo()
         {
             LinkedListClass llc = new LinkedListClass();

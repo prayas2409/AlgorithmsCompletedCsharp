@@ -14,10 +14,17 @@ namespace DataStructures
     /// <summary>
     /// The class storing the blueprint for an object storing the week and array of days falling on that day
     /// </summary>
-    class Calender
+    public class Calender
     {
-        string week;
-        string[] days = new string[8];
+        /// <summary>
+        /// The week day
+        /// </summary>
+        private string week;
+
+        /// <summary>
+        /// The days falling on the day of the week
+        /// </summary>
+        private string[] days = new string[8];
 
         /// <summary>
         /// Sets the week day.
@@ -29,7 +36,7 @@ namespace DataStructures
         }
 
         /// <summary>
-        /// Returns the dayof week.
+        /// Returns the day of week.
         /// </summary>
         /// <returns>The day of the week held by this object</returns>
         public string ReturnDayofWeek()
@@ -43,9 +50,9 @@ namespace DataStructures
         /// <returns>The array soring the number of days</returns>
         public string[] ReturnDays()
         {
-            //string days1 = this.days.ToString();
-            //foreach (string s in days) Console.Write(s.ToString());
-            return days;
+            //// string days1 = this.days.ToString();
+            //// foreach (string s in days) Console.Write(s.ToString());
+            return this.days;
         }
 
         /// <summary>
@@ -78,14 +85,15 @@ namespace DataStructures
         /// </summary>
         public void AddSpace()
         {
-            int i = 0, j=0;
+            int j = 0;
 
             //// while (this.days[i].Equals(null) != false) i++;
             
-            for (j = 5; j >= 1 ; j--)
+            for (j = 5; j >= 1; j--)
             {
                 this.days[j] = this.days[j - 1];
             }
+
             this.days[0] = "\t";
         }
     }

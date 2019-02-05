@@ -1,11 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PrimeAnagram.cs" company="Bridgelabz">
+//   Copyright © 2018 Company
+// </copyright>
+// <creator name="Prayas Pagade"/>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DataStructures
 {
-    class PrimeAnagram
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The class is to execute the prime anagram program
+    /// </summary>
+    public class PrimeAnagram
     {
+        /// <summary>
+        /// Executes the the prime anagram programs
+        /// </summary>
+        /// <returns>the integer array of anagrams</returns>
         public int[,] PrimeAnagramDemo()
         {
             try
@@ -21,19 +35,22 @@ namespace DataStructures
                     primenumbers[i, 0] = primenumbers[i - 1, 0] + 100;
                     anagram[i, 0] = primenumbers[i - 1, 0] + 100;
                 }
+
                 for (i = 0; i < 10; i++)
                 {
                     count = 0;
                     for (j = 1; j < 100; j++)
                     {
                         //// WriteLine("For i= {0}, j= {1}, count= {2} ",i,j,count);
-                        if (Utility.IsPrime((primenumbers[i, 0] + j)))
+                        if (Utility.IsPrime(primenumbers[i, 0] + j))
                         {
                             count++;
                             primenumbers[i, count] = primenumbers[i, 0] + j;
                         }
                     }
                 }
+
+                /*
                 Console.WriteLine("Printing the prime numbers");
                 for (i = 0; i < 10; i++)
                 {
@@ -45,15 +62,14 @@ namespace DataStructures
                     }
                     Console.WriteLine();
                 }
+                */
 
                 for (i = 0; i < 10; i++)
                 {
                     count = 0;
                     //// converting the numbers to string
-
                     for (j = 1; primenumbers[i, j] != 0; j++)
                     {
-
                         for (k = j + 1; primenumbers[i, k] != 0; k++)
                         {
                             //// Console.WriteLine("For i: {0} comparing number1: {1} number2: {2} gives {3}",i, primenumbers[i, j], primenumbers[i, k], Utility.Anagram(Convert.ToString(primenumbers[i, j]), Convert.ToString(primenumbers[i, k])));
@@ -66,17 +82,20 @@ namespace DataStructures
                         }
                     }
                 }
+
                 Console.WriteLine("Printing the prime numbers that are Anagrams");
                 for (i = 0; i < 10; i++)
                 {
-                    Console.Write("For {0} - {1}: ", anagram[i, 0], (anagram[i, 0] + 100));
+                    Console.Write("For {0} - {1}: ", anagram[i, 0], anagram[i, 0] + 100);
 
                     for (j = 1; anagram[i, j] != 0; j++)
                     {
                         Console.Write(anagram[i, j] + " ");
                     }
+
                     Console.WriteLine();
                 }
+
                 return anagram;
             }
             catch (Exception e)

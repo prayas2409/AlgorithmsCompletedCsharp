@@ -8,8 +8,8 @@
 namespace DataStructures
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Text;
     
     /// <summary>
@@ -32,11 +32,13 @@ namespace DataStructures
                 {
                     string1.AddLast(c);
                 }
+
                 Console.WriteLine("String in list is ");
                 foreach (char c in string1)
                 {
                     Console.Write(c + " ");
                 }
+
                 while (string1.Count > 1)
                 {
                     if (string1.First.Value.Equals(string1.Last.Value))
@@ -51,6 +53,7 @@ namespace DataStructures
                         break;
                     }
                 }
+
                 if (flag == true)
                 {
                     Console.WriteLine("The string is a palindrome");

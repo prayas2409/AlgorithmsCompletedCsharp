@@ -14,7 +14,11 @@ namespace DataStructures
     /// </summary>
     public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The command line arguments.</param>
+        public static void Main(string[] args)
         {
             try
             {

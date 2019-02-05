@@ -27,7 +27,8 @@ namespace DataStructures
                 string expression;
                 Console.WriteLine("Enter the expression");
                 expression = Utility.IsExpression(Console.ReadLine());
-                Stack<char> brackets = new Stack<char>();
+                //// self implemented Linked list
+                LinkedListClass brackets = new LinkedListClass();
                 foreach (char c in expression)
                 {
                     //// If open found its pushed
@@ -39,24 +40,43 @@ namespace DataStructures
 
                         //// if closed parenthesis encountered it pops the open parenthesis
                         case ')':
-                            brackets.Pop();
+                            switch (brackets.Pop())
+                            {                               
+                                case false:
+                                    Console.WriteLine("Already empty equation not balanced");
+                                    return;
+                            }   
+
                             break;
                         case '{':
                             brackets.Push(c);
                             break;
                         case '}':
-                            brackets.Pop();
+                            switch (brackets.Pop())
+                            {
+                                case false:
+                                    Console.WriteLine("Already empty equation not balanced");
+                                    return;
+                            }
+
                             break;
                         case '[':
                             brackets.Push(c);
                             break;
                         case ']':
-                            brackets.Pop();
+                            switch (brackets.Pop())
+                            {
+                                case false:
+                                    Console.WriteLine("Already empty equation not balanced");
+                                    return;
+                            }
+
                             break;
                     }
                     //// if stack empty then parenthesis are balanced                    
                 }
-                if (brackets.Count == 0)
+
+                if (brackets.IsEmpty())
                 {
                     Console.WriteLine("The expression is balanced");
                 }

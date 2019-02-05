@@ -8,19 +8,19 @@
 namespace DataStructures
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.Generic;   
     using System.IO;
-    using DataStructures;
-    using System.Text;
     using System.Linq;
+    using System.Text;
+    using DataStructures;
 
     /// <summary>
     /// class to execute ordered list 
     /// </summary>
-    class OrderedList
+    public class OrderedList
     {
         /// <summary>
-        /// Tp execute the ordered list.
+        /// To execute the ordered list.
         /// </summary>
         public void OrderedListDemo()
         {
@@ -61,21 +61,22 @@ namespace DataStructures
                 {
                     result = result + s.ToString();
                     i++;
-                    if(i != (intlist.Count))
+                    if (i != intlist.Count)
                     {
                         result = result + " ";
                     }
                 }
                 
-                Utility.WriteToFile(result,path);
+                Utility.WriteToFile(result, path);
             }
             catch (Exception e)
             {
                 Console.WriteLine("The process cannot be completed because " + e.Message);
             }
         }
+
         /// <summary>
-        /// Ordereds the linked list demo.
+        /// Orders the linked list demo.
         /// </summary>
         public void OrderedLinkedListDemo()
         {
@@ -91,13 +92,14 @@ namespace DataStructures
                 foreach (int s in filetointarray)
                 {
                     intlist.AddLast(s);
-
                 }
+
                 Console.WriteLine("Fetched list of numbers");
                 foreach (int s in intlist)
                 {
                     Console.Write(s + " ");
                 }
+
                 Console.WriteLine();
                 Console.WriteLine("Enter the integer to be searched ");
                 int search = Utility.IsInteger(Console.ReadLine());
@@ -118,8 +120,6 @@ namespace DataStructures
                 }
 
                 ilist = intlist.OrderBy(c => c).ToList();
-
-
                 intlist.Clear();
                 foreach (int s in ilist)
                 {
@@ -132,10 +132,11 @@ namespace DataStructures
                     result = result + s.ToString();
                     result = result + " ";
                 }
+
                 result = result.Trim();
 
                 Utility.WriteToFile(result, path);
-                //intlist.
+                //// intlist.
             }
             catch (Exception e)
             {

@@ -12,13 +12,15 @@ namespace DataStructures
     using System.Text;
 
     /// <summary>
-    /// The class to execute the Calender printer
+    /// The class to execute the Calendar printer
     /// </summary>
-    class CalenderPrinter
+    public class CalenderPrinter
     {
         /// <summary>
-        /// Method to prin the calender
+        /// Method to print the calendar
         /// </summary>
+        //// for command line arguments
+        //// public void CalenderPrinterDemo(string month, int year)
         public void CalenderPrinterDemo()
         {
             try
@@ -26,7 +28,7 @@ namespace DataStructures
                 //// storing months in array
                 string[] months = new string[]
                 {
-               "jan" , "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"
+               "jan", "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"
                 };
                 //// storing days
                 string[] days = { "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat" };
@@ -38,6 +40,7 @@ namespace DataStructures
                 {
                     Console.Write(s + " ");
                 }
+
                 Console.WriteLine();
                 Console.WriteLine("Enter the month from the above");
                 //// taking month as input 
@@ -53,8 +56,10 @@ namespace DataStructures
                         flag = true;
                         break;
                     }
+
                     monthint++;
                 }
+
                 if (flag == false)
                 {
                     Console.WriteLine("The string you mentioned is not a month");
@@ -75,6 +80,7 @@ namespace DataStructures
                 {
                     calender[0, counter] = days[counter++] + "\t";
                 }
+
                 counter = 0;
                 string daycalulated = Utility.DayOfWeek(1, monthint + 1, year);
                 i = 0;
@@ -93,12 +99,18 @@ namespace DataStructures
                         if (daycalulated.Equals(days[i]))
                         {
                             j = 1;
-                            while (calender[j, i] != null) j++;
+                            while (calender[j, i] != null)
+                            {
+                                j++;
+                            }
+
                             calender[j, i] = day.ToString() + "\t";
                         }
                     }
+
                     day++;
                 }
+
                 Console.WriteLine(months[monthint] + " " + year);
                 for (i = 0; i < 6; i++)
                 {
@@ -106,6 +118,7 @@ namespace DataStructures
                     {
                         Console.Write(calender[i, j]);
                     }
+
                     Console.WriteLine();
                 }
             }

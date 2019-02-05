@@ -44,12 +44,14 @@ namespace DataStructures
                         count++;
                     }
                 }
+                //// storing the words separately in array
                 string[] filetostring = new string[count + 1];
                 filetostring = Utility.StringToStringArray(read);
 
                 List<string> stringlist = new List<string>();
                 foreach (string s in filetostring)
                 {
+                    //// adding words to the list
                     stringlist.Add(s);
                 }
 
@@ -57,7 +59,8 @@ namespace DataStructures
                 string search = Utility.IsString(Console.ReadLine());
                 bool found = false;
                 foreach (string find in stringlist)
-                {
+                {   
+                    //// if the word is in the array 
                     if (find.Equals(search))
                     {
                         found = true;
@@ -66,20 +69,18 @@ namespace DataStructures
                 }
 
                 if (found == true)
-                {
+                { 
+                    //// if the number found
                     stringlist.Remove(search);
                 }
                 else
                 {
                     stringlist.Add(search);
-                }
-
-                search = string.Empty;
-                count = 0;
+                }                            
 
                 search = Utility.StringListtoString(stringlist);
                 Console.WriteLine("Trying to write to the file");
-                Utility.WriteToFile(search,path);
+                Utility.WriteToFile(search, path);
                 Console.WriteLine("After writing to the file");
             }
             catch (Exception e)
